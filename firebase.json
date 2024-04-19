@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"my-leprechaun","appId":"1:653080049349:android:ab57d5530d8962c07b22ac","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"my-leprechaun","configurations":{"android":"1:653080049349:android:ab57d5530d8962c07b22ac","ios":"1:653080049349:ios:ef51bd4277ffee247b22ac"}}}}}}

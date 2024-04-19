@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "653080049349",
+    "project_id": "my-leprechaun",
+    "storage_bucket": "my-leprechaun.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653080049349:android:ab57d5530d8962c07b22ac",
+        "android_client_info": {
+          "package_name": "com.example.leprechaun"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt_i4q5_QtjaQcNDl5xqs0TDcGGYokf5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
