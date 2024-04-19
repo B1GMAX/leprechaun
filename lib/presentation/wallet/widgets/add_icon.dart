@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class AddIcon extends StatelessWidget {
   final VoidCallback onAddPressed;
@@ -16,7 +16,7 @@ class AddIcon extends StatelessWidget {
         color: Color(0xFF776BFE),
       ),
       padding: const EdgeInsets.all(10),
-      child: Image.asset('assets/plus.png'),
+      child: Image.asset('assets/plus.png', color: Colors.white,),
     );
   }
 }

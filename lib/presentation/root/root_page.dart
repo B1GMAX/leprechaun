@@ -20,8 +20,9 @@ class RootPage extends StatelessWidget {
           currentIndex: rootController.currentIndex.value,
         ),
         body: PageView(
+          physics: const NeverScrollableScrollPhysics(),
           controller: rootController.pageController.value,
-          children: [
+          children: const [
             Center(
               child: Text(
                 'Home',
