@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leprechaun/core/widgets/custom_bottom_bar/custom_bottom_bar.dart';
+import 'package:leprechaun/presentation/leaders/leaders_page.dart';
 import 'package:leprechaun/presentation/wallet/wallet_page.dart';
 
 import 'controller/root_controller.dart';
@@ -13,26 +15,40 @@ class RootPage extends StatelessWidget {
     final rootController = Get.put(RootController());
     return Obx(
       () => Scaffold(
-        bottomNavigationBar: CustomBottomBar(
-          onTap: rootController.navigateTo,
-          currentIndex: rootController.currentIndex.value,
-        ),
-        body: PageView(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: rootController.pageController.value,
-          children: const [
-            Center(
-              child: Text(
-                'Home',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
+        // bottomNavigationBar: CustomBottomBar(
+        //   onTap: rootController.navigateTo,
+        //   currentIndex: rootController.currentIndex.value,
+        // ),
+        body: SafeArea(
+          child: Stack(
+            children: [
+              PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: rootController.pageController.value,
+                children: const [
+                  Center(
+                    child: Text(
+                      'Home',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  WalletPage(),
+                  LeadersPage(),
+                ],
+              ),
+              Positioned(
+                bottom: 0,
+                child: CustomBottomBar(
+                  onTap: rootController.navigateTo,
+                  currentIndex: rootController.currentIndex.value,
                 ),
               ),
-            ),
-            WalletPage(),
-          ],
+            ],
+          ),
         ),
       ),
     );

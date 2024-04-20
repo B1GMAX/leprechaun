@@ -17,9 +17,13 @@ class CustomBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
-    return SizedBox(
+    return Container(
       width: size.width,
       height: 85,
+     decoration: BoxDecoration(
+       color: Colors.transparent,
+       borderRadius: BorderRadius.all(Radius.circular(52))
+     ),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
