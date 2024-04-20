@@ -17,9 +17,7 @@ class CustomBackIcon extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: GestureDetector(
-        onTap: () {
-          Get.back();
-        },
+        onTap: Get.back,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(

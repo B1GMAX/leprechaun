@@ -15,8 +15,6 @@ class WalletController extends GetxController {
 
   final List<String> currencyList = ['\$', '€'];
 
-
-
   void selectCurrency(int index, int currency) {
     selectedCurrencyIndex.value = index;
     selectedCurrencyValue.value = currency;

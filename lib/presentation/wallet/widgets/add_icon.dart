@@ -10,13 +10,21 @@ class AddIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(50),),
-        color: Color(0xFF776BFE),
+    return GestureDetector(
+      onTap: onAddPressed,
+      child: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(50),
+          ),
+          color: Color(0xFF776BFE),
+        ),
+        padding: const EdgeInsets.all(10),
+        child: Image.asset(
+          'assets/plus.png',
+          color: Colors.white,
+        ),
       ),
-      padding: const EdgeInsets.all(10),
-      child: Image.asset('assets/plus.png', color: Colors.white,),
     );
   }
 }

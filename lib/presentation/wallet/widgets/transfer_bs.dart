@@ -28,9 +28,7 @@ class TransferBs extends StatelessWidget {
               SendTo(
                 text: 'Transfer to',
                 selectedIndex: walletController.selectedFamilyIndex.value,
-                onPressed: (index) {
-                  walletController.updateSelectedFamilyIndex(index);
-                },
+                onPressed: walletController.updateSelectedFamilyIndex,
               ),
               const SizedBox(height: 25),
               const Text(
@@ -69,9 +67,7 @@ class TransferBs extends StatelessWidget {
                         index: index,
                         isSelected: index ==
                             walletController.selectedCurrencyIndex.value,
-                        onPressed: (index, currency) {
-                          walletController.selectCurrency(index, currency);
-                        },
+                        onPressed: walletController.selectCurrency,
                         value:
                             walletController.checkSelectedCurrencyIndex(index),
                       );
@@ -93,9 +89,7 @@ class TransferBs extends StatelessWidget {
                 height: 50,
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                    Get.back();
-                  },
+                  onPressed: Get.back,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF4BB955),
                   ),

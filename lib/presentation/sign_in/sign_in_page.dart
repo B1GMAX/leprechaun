@@ -167,9 +167,7 @@ class SignInPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 15),
                   GestureDetector(
-                    onTap: () {
-                      signInController.loginWithGoogle();
-                    },
+                    onTap: signInController.loginWithGoogle,
                     child: Container(
                       width: double.infinity,
                       height: 40,
