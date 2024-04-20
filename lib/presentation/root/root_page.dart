@@ -15,10 +15,6 @@ class RootPage extends StatelessWidget {
     final rootController = Get.put(RootController());
     return Obx(
       () => Scaffold(
-        // bottomNavigationBar: CustomBottomBar(
-        //   onTap: rootController.navigateTo,
-        //   currentIndex: rootController.currentIndex.value,
-        // ),
         body: SafeArea(
           child: Stack(
             children: [
