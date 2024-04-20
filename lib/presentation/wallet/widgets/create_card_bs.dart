@@ -67,13 +67,9 @@ class CreateCardBs extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                // walletController.addNewCard();
+                walletController.addNewCard();
                 Get.back();
-                Get.dialog(NewCardAddedCongrads());
-                // showDialog(
-                //   context: context,
-                //   builder: (context) => const NewCardAddedCongrads(),
-                // );
+                Get.dialog(const NewCardAddedCongrads(),);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF4BB955),
