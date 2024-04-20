@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:leprechaun/core/models/card_model.dart';
 
 class CardWidget extends StatelessWidget {
-  final Color color;
-  final String balance;
-  final String number;
+  final CardModel cardModel;
 
   const CardWidget({
-    required this.color,
-    required this.balance,
-    required this.number,
+    required this.cardModel,
     super.key,
   });
 
@@ -20,9 +17,9 @@ class CardWidget extends StatelessWidget {
         borderRadius: const BorderRadius.all(
           Radius.circular(20),
         ),
-        color: color,
+        color: cardModel.color,
       ),
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -41,22 +38,32 @@ class CardWidget extends StatelessWidget {
             ],
           ),
           Text(
-            '\$$balance',
+            '\$${cardModel.balance}',
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w800,
-              color: Colors.white
+              color: Colors.white,
             ),
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 12),
           Text(
-            number,
+            cardModel.number,
             style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-                color: Colors.white
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
             ),
           ),
+          if (cardModel.name != null && cardModel.name!.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            Text(
+              cardModel.name!,
+              style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white),
+            ),
+          ],
         ],
       ),
     );

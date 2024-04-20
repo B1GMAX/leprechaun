@@ -41,6 +41,7 @@ class TransferBs extends StatelessWidget {
               ),
               TextField(
                 controller: walletController.bsTextController,
+                keyboardType: TextInputType.number,
                 style: const TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.w600,

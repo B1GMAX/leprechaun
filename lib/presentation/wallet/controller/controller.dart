@@ -12,6 +12,8 @@ class WalletController extends GetxController {
   RxInt currentIndex = 0.obs;
 
   final bsTextController = TextEditingController(text: '20');
+  final cardSumTextController = TextEditingController();
+  final cardNameTextController = TextEditingController();
 
   final List<String> currencyList = ['\$', '€'];
 
@@ -31,10 +33,14 @@ class WalletController extends GetxController {
 
   double? autoConvertCurrency() {
     if (selectedCurrency.value == '€') {
-    double value = double.parse(bsTextController.value.text.trim());
-     return value = value + 1;
+      double value = double.parse(bsTextController.value.text.trim());
+      return value = value + 1;
     }
     return null;
+  }
+
+  void updateCurrentIndex(int index) {
+    currentIndex.value = index;
   }
 
   int checkSelectedCurrencyIndex(int index) {
@@ -50,7 +56,7 @@ class WalletController extends GetxController {
     return 20;
   }
 
-  Color generateRandomColor() {
+  Color _generateRandomColor() {
     Random random = Random();
 
     int red = random.nextInt(256);
@@ -82,11 +88,30 @@ class WalletController extends GetxController {
       balance: '10.00',
       number: '1234 5678 9078 1234',
     ),
-  ];
+  ].obs;
 
+  String _generateRandomCreditCardNumber() {
+    Random random = Random();
+    String number = '';
+    for (int i = 0; i < 16; i++) {
+      if (i % 4 == 0 && i != 0) {
+        number += ' ';
+      }
+      number += random.nextInt(10).toString();
+    }
+    return number;
+  }
 
-
-  void updateCurrentIndex(int index) {
-    currentIndex.value = index;
+  void addNewCard() {
+    cardList.add(
+      CardModel(
+        color: _generateRandomColor(),
+        balance: cardSumTextController.text.isEmpty
+            ? '0.00'
+            : cardSumTextController.text.trim(),
+        number: _generateRandomCreditCardNumber(),
+        name: cardNameTextController.text.trim(),
+      ),
+    );
   }
 }

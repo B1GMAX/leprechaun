@@ -5,6 +5,7 @@ import 'package:leprechaun/presentation/wallet/controller/controller.dart';
 import 'package:leprechaun/presentation/wallet/widgets/add_icon.dart';
 import 'package:leprechaun/presentation/wallet/widgets/card_widget.dart';
 import 'package:leprechaun/presentation/wallet/widgets/cards_list_widget.dart';
+import 'package:leprechaun/presentation/wallet/widgets/create_card_bs.dart';
 import 'package:leprechaun/presentation/wallet/widgets/send_to.dart';
 import 'package:leprechaun/presentation/wallet/widgets/transaction_list_widget.dart';
 import 'package:leprechaun/presentation/wallet/widgets/transfer_bs.dart';
@@ -36,7 +37,13 @@ class WalletPage extends StatelessWidget {
                               color: Colors.white),
                         ),
                         AddIcon(
-                          onAddPressed: () {},
+                          onAddPressed: () {
+                            Get.bottomSheet(
+                              const CreateCardBs(),
+                              backgroundColor: Colors.black.withOpacity(0.1),
+                              isScrollControlled: true,
+                            );
+                          },
                         ),
                       ],
                     ),
@@ -46,9 +53,7 @@ class WalletPage extends StatelessWidget {
                     items: walletController.cardList
                         .map(
                           (card) => CardWidget(
-                            color: card.color,
-                            balance: card.balance,
-                            number: card.number,
+                            cardModel: card,
                           ),
                         )
                         .toList(),
@@ -57,7 +62,7 @@ class WalletPage extends StatelessWidget {
                     },
                   ),
                   DotsIndicator(
-                    dotsCount: 3,
+                    dotsCount: walletController.cardList.length,
                     position: walletController.currentIndex.value,
                     decorator: DotsDecorator(
                       color: Colors.green.withOpacity(0.5),
