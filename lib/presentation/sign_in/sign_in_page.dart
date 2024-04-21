@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:leprechaun/core/widgets/custom_back_icon.dart';
 import 'package:email_validator/email_validator.dart';
 import 'controller/sign_in_controller.dart';
 
@@ -21,11 +20,6 @@ class SignInPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CustomBackIcon(
-                    backGroundColor: Colors.white.withOpacity(0.2),
-                    iconColor: const Color(0xFFBCBCBC),
-                  ),
-                  const SizedBox(height: 5),
                   Image.asset(
                     'assets/hi.png',
                     height: 250,

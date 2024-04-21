@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:leprechaun/presentation/root/root_page.dart';
+import 'package:leprechaun/presentation/pin_code/pin_code_page.dart';
 import 'package:leprechaun/presentation/splash/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF20265F),
       ),
       home: FirebaseAuth.instance.currentUser != null
-          ? const RootPage()
+          ? const PinCodePage()
           : const SplashPage(),
     );
   }

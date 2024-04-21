@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:leprechaun/core/auth_service/auth_service.dart';
+import 'package:leprechaun/core/firebase_services/auth_service.dart';
 
 class SignInController extends GetxController {
   final formKey = GlobalKey<FormState>();
