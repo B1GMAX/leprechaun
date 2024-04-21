@@ -16,7 +16,7 @@ class KeyboardKeyWidget extends StatelessWidget {
       child: Text(
         keyValue == 'bksp' ? '⌫' : keyValue,
         style: const TextStyle(
-          fontSize: 32,
+          fontSize: 28,
           fontWeight: FontWeight.w700,
           color: Colors.white,
         ),

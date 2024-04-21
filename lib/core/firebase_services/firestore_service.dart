@@ -14,5 +14,16 @@ class FireStoreService {
     }
   }
 
+  Future<String> getPinCode() async {
+    String pin = '';
+    if (_auth.currentUser != null) {
+      final document =
+          await fireStore.collection('users').doc(_auth.currentUser!.uid).get();
 
+      if(document.data() != null && document.data()!.containsKey('pinCode')){
+        pin = document['pinCode'];
+      }
+    }
+    return pin;
+  }
 }

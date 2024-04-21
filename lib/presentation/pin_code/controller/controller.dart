@@ -1,9 +1,16 @@
 import 'package:get/get.dart';
 import 'package:leprechaun/core/firebase_services/firestore_service.dart';
+import 'package:leprechaun/presentation/root/root_page.dart';
 
 class PinCodeController extends GetxController {
   final fireStoreService = FireStoreService();
   RxString input = ''.obs;
+  RxString savedPin = ''.obs;
+  RxBool isCorrect = true.obs;
+
+  PinCodeController() {
+    getPin();
+  }
 
   void onKeyPressed(String keyValue) {
     if (keyValue == 'bksp' && input.isNotEmpty) {
@@ -15,5 +22,19 @@ class PinCodeController extends GetxController {
 
   void savePinCode() {
     fireStoreService.savePinCode(input.value);
+    Get.to(const RootPage());
+  }
+
+  void checkInputtedCode(){
+    if(input.value == savedPin.value){
+      isCorrect.value = true;
+      Get.to(const RootPage());
+    } else {
+      isCorrect.value = false;
+    }
+  }
+
+  Future<void> getPin() async {
+    savedPin.value = await fireStoreService.getPinCode();
   }
 }
