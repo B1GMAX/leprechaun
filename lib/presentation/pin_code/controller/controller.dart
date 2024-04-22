@@ -29,11 +29,13 @@ class PinCodeController extends GetxController {
   }
 
   void checkEnteredCode() {
-    if (input.value == savedPin.value) {
-      isCorrect.value = true;
-      Get.to(() => const RootPage());
-    } else {
-      isCorrect.value = false;
+    if(savedPin.isNotEmpty){
+      if (input.value == savedPin.value) {
+        Get.to(() => const RootPage());
+        isCorrect.value = true;
+      } else {
+        isCorrect.value = false;
+      }
     }
   }
 
