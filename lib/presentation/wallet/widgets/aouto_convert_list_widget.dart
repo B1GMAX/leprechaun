@@ -17,7 +17,7 @@ class AutoConvertListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         onPressed(index, value);
       },
       child: Container(

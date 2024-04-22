@@ -25,7 +25,7 @@ class AuthService {
   }
 
   Future<User?> loginWithGoogle() async {
-   try {
+    try {
       final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
 
       if (gUser != null) {
@@ -39,9 +39,15 @@ class AuthService {
       } else {
         return null;
       }
-    } on FirebaseAuthException catch (e, s){
-     print('loginWithGoogle error - $e; stack - $s');
-   }
-   return null;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        Get.snackbar('The account already exists for that email.', '',
+            snackPosition: SnackPosition.BOTTOM);
+      } else {
+        Get.snackbar('Something wen wrong!', '',
+            snackPosition: SnackPosition.BOTTOM);
+      }
+    }
+    return null;
   }
 }

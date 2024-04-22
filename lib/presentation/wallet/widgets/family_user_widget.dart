@@ -30,9 +30,7 @@ class FamilyUserWidget extends StatelessWidget {
             ),
             height: 70,
             width: 70,
-            child: index == 3
-                ? Image.asset('assets/family_2.png')
-                : Image.asset('assets/family_$index.png'),
+            child: Image.asset('assets/family_${index == 3 ? '2' : index}.png'),
           ),
           if (isSelected != null && isSelected!)
             Positioned(

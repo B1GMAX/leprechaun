@@ -33,8 +33,7 @@ class WalletController extends GetxController {
 
   double? autoConvertCurrency() {
     if (selectedCurrency.value == '€') {
-      double value = double.parse(bsTextController.value.text.trim());
-      return value = value + 1;
+      return double.parse(bsTextController.value.text.trim()) + 1;
     }
     return null;
   }
@@ -113,5 +112,13 @@ class WalletController extends GetxController {
         name: cardNameTextController.text.trim(),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    bsTextController.dispose();
+    cardSumTextController.dispose();
+    cardNameTextController.dispose();
   }
 }

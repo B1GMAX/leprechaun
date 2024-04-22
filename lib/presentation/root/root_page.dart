@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leprechaun/core/widgets/custom_bottom_bar/custom_bottom_bar.dart';
@@ -36,8 +35,8 @@ class RootPage extends StatelessWidget {
                   LeadersPage(),
                 ],
               ),
-              Positioned(
-                bottom: 0,
+              Align(
+                alignment: Alignment.bottomCenter,
                 child: CustomBottomBar(
                   onTap: rootController.navigateTo,
                   currentIndex: rootController.currentIndex.value,

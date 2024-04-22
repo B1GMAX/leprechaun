@@ -12,21 +12,29 @@ class SignInController extends GetxController {
   final _authService = AuthService();
   final RxBool isPasswordVisible = false.obs;
 
-  void updatePasswordVisibility(bool isVisible) {
-    isPasswordVisible.value = !isVisible;
+  void updatePasswordVisibility() {
+    isPasswordVisible.value = !isPasswordVisible.value;
   }
 
-  Future<void> createViaPasswordAndEmail(String email, String password) async {
-    final user = await _authService.createViaPasswordAndEmail(email, password);
+  Future<void> createViaPasswordAndEmail() async {
+    final user = await _authService.createViaPasswordAndEmail(
+        emailTextController.text.trim(), passwordTextController.text.trim());
     if (user != null) {
-      Get.to(const PinCodePage());
+      Get.to(() => const PinCodePage());
     }
   }
 
   Future<void> loginWithGoogle() async {
     final user = await _authService.loginWithGoogle();
     if (user != null) {
-      Get.to(const PinCodePage());
+      Get.to(() => const PinCodePage());
     }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailTextController.dispose();
+    passwordTextController.dispose();
   }
 }

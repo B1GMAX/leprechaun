@@ -38,12 +38,16 @@ class LeaderWidget extends StatelessWidget {
           children: [
             Row(
               children: [
-                Text(
-                  '${index + 1}.',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: isSelected ? Colors.white : const Color(0xFF4BB955),
+                SizedBox(
+                  width: 30,
+                  child: Text(
+                    '${index + 1}.',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color:
+                          isSelected ? Colors.white : const Color(0xFF4BB955),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 15),

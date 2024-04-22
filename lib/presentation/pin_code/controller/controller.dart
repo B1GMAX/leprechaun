@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:leprechaun/consts.dart';
 import 'package:leprechaun/core/firebase_services/firestore_service.dart';
 import 'package:leprechaun/presentation/root/root_page.dart';
 
@@ -13,22 +14,24 @@ class PinCodeController extends GetxController {
   }
 
   void onKeyPressed(String keyValue) {
-    if (keyValue == 'bksp' && input.isNotEmpty) {
+    if (keyValue == bksp && input.isNotEmpty) {
       input.value = input.substring(0, input.value.length - 1);
-    } else if (input.value.length < 4) {
+    } else if (input.value.length < 4 && keyValue != bksp) {
       input.value += keyValue;
     }
   }
 
   void savePinCode() {
-    fireStoreService.savePinCode(input.value);
-    Get.to(const RootPage());
+    if (savedPin.isEmpty) {
+      fireStoreService.savePinCode(input.value);
+      Get.to(() => const RootPage());
+    }
   }
 
-  void checkInputtedCode(){
-    if(input.value == savedPin.value){
+  void checkEnteredCode() {
+    if (input.value == savedPin.value) {
       isCorrect.value = true;
-      Get.to(const RootPage());
+      Get.to(() => const RootPage());
     } else {
       isCorrect.value = false;
     }

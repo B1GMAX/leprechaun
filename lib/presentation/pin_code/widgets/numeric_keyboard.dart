@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:leprechaun/consts.dart';
 import 'package:leprechaun/presentation/pin_code/controller/controller.dart';
 import 'package:leprechaun/presentation/root/root_page.dart';
 
@@ -25,58 +24,16 @@ class NumericKeyboard extends StatelessWidget {
         () => Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                KeyboardKeyWidget(
-                  keyValue: '1',
+            GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 3,
+              childAspectRatio: 2.3,
+              children: List.generate(9, (index) {
+                return KeyboardKeyWidget(
+                  keyValue: (index + 1).toString(),
                   onKeyPressed: pinCodeController.onKeyPressed,
-                ),
-                KeyboardKeyWidget(
-                  keyValue: '2',
-                  onKeyPressed: pinCodeController.onKeyPressed,
-                ),
-                KeyboardKeyWidget(
-                  keyValue: '3',
-                  onKeyPressed: pinCodeController.onKeyPressed,
-                ),
-              ],
-            ),
-            const SizedBox(height: 10.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                KeyboardKeyWidget(
-                  keyValue: '4',
-                  onKeyPressed: pinCodeController.onKeyPressed,
-                ),
-                KeyboardKeyWidget(
-                  keyValue: '5',
-                  onKeyPressed: pinCodeController.onKeyPressed,
-                ),
-                KeyboardKeyWidget(
-                  keyValue: '6',
-                  onKeyPressed: pinCodeController.onKeyPressed,
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                KeyboardKeyWidget(
-                  keyValue: '7',
-                  onKeyPressed: pinCodeController.onKeyPressed,
-                ),
-                KeyboardKeyWidget(
-                  keyValue: '8',
-                  onKeyPressed: pinCodeController.onKeyPressed,
-                ),
-                KeyboardKeyWidget(
-                  keyValue: '9',
-                  onKeyPressed: pinCodeController.onKeyPressed,
-                ),
-              ],
+                );
+              }),
             ),
             const SizedBox(height: 10),
             Row(
@@ -88,7 +45,7 @@ class NumericKeyboard extends StatelessWidget {
                   onKeyPressed: pinCodeController.onKeyPressed,
                 ),
                 KeyboardKeyWidget(
-                  keyValue: 'bksp',
+                  keyValue: bksp,
                   onKeyPressed: pinCodeController.onKeyPressed,
                 ),
               ],
@@ -102,10 +59,8 @@ class NumericKeyboard extends StatelessWidget {
               ),
               child: ElevatedButton(
                 onPressed: () {
-                  if (pinCodeController.savedPin.isEmpty) {
-                    pinCodeController.savePinCode();
-                  }
-                  pinCodeController.checkInputtedCode();
+                  pinCodeController.savePinCode();
+                  pinCodeController.checkEnteredCode();
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF4BB955),
@@ -124,7 +79,7 @@ class NumericKeyboard extends StatelessWidget {
               const SizedBox(height: 15),
               TextButton(
                 onPressed: () {
-                  Get.to(const RootPage());
+                  Get.to(() => const RootPage());
                 },
                 child: const Text(
                   'Without Code',

@@ -11,6 +11,7 @@ LeaderModel _$LeaderModelFromJson(Map<String, dynamic> json) => LeaderModel(
       title: json['title'] as String,
       completed: json['completed'] as bool,
       userId: json['userId'] as int,
+      name: json['name'] as String?,
     );
 
 Map<String, dynamic> _$LeaderModelToJson(LeaderModel instance) =>
@@ -19,4 +20,5 @@ Map<String, dynamic> _$LeaderModelToJson(LeaderModel instance) =>
       'id': instance.id,
       'title': instance.title,
       'completed': instance.completed,
+      'name': instance.name,
     };

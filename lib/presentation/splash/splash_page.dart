@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:leprechaun/presentation/pin_code/pin_code_page.dart';
 import 'package:leprechaun/presentation/sign_in/sign_in_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -11,12 +13,13 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2), (){
-      Get.to(const SignInPage());
+    Future.delayed(const Duration(seconds: 2), () {
+      Get.to(() => FirebaseAuth.instance.currentUser != null
+          ? const PinCodePage()
+          : const SignInPage());
     });
   }
 
@@ -31,10 +34,7 @@ class _SplashPageState extends State<SplashPage> {
           const Text(
             'Leprechaun',
             style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w700,
-              color: Colors.white
-            ),
+                fontSize: 24, fontWeight: FontWeight.w700, color: Colors.white),
           ),
         ],
       ),

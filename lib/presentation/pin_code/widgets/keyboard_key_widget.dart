@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:leprechaun/consts.dart';
 
 class KeyboardKeyWidget extends StatelessWidget {
   final String keyValue;
   final Function(String) onKeyPressed;
 
-  const KeyboardKeyWidget(
-      {required this.keyValue, required this.onKeyPressed, super.key});
+  const KeyboardKeyWidget({
+    required this.keyValue,
+    required this.onKeyPressed,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +18,7 @@ class KeyboardKeyWidget extends StatelessWidget {
         onKeyPressed(keyValue);
       },
       child: Text(
-        keyValue == 'bksp' ? '⌫' : keyValue,
+        keyValue == bksp ? '⌫' : keyValue,
         style: const TextStyle(
           fontSize: 28,
           fontWeight: FontWeight.w700,

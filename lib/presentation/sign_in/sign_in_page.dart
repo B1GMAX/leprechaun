@@ -56,6 +56,7 @@ class SignInPage extends StatelessWidget {
                                   : null,
                           style: const TextStyle(color: Colors.white),
                           controller: signInController.emailTextController,
+                          keyboardType: TextInputType.emailAddress,
                           decoration: const InputDecoration(
                             labelText: 'Email Address',
                             labelStyle: TextStyle(
@@ -86,12 +87,10 @@ class SignInPage extends StatelessWidget {
                       Expanded(
                         child: Obx(
                           () => TextFormField(
-                            validator: (value) {
-                              if (value != null && value.length < 6) {
-                                return 'Enter min. 7 characters';
-                              }
-                              return null;
-                            },
+                            validator: (value) =>
+                                (value != null && value.length < 6)
+                                    ? 'Enter min. 7 characters'
+                                    : null,
                             style: const TextStyle(color: Colors.white),
                             obscureText:
                                 signInController.isPasswordVisible.value,
@@ -105,18 +104,14 @@ class SignInPage extends StatelessWidget {
                               ),
                               suffixIcon: IconButton(
                                 onPressed: () {
-                                  signInController.updatePasswordVisibility(
-                                      signInController.isPasswordVisible.value);
+                                  signInController.updatePasswordVisibility();
                                 },
-                                icon: signInController.isPasswordVisible.value
-                                    ? const Icon(
-                                        Icons.visibility,
-                                        color: Colors.white,
-                                      )
-                                    : const Icon(
-                                        Icons.visibility_off,
-                                        color: Colors.white,
-                                      ),
+                                icon: Icon(
+                                  signInController.isPasswordVisible.value
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
@@ -131,10 +126,7 @@ class SignInPage extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {
                         if (signInController.formKey.currentState!.validate()) {
-                          signInController.createViaPasswordAndEmail(
-                            signInController.emailTextController.text.trim(),
-                            signInController.passwordTextController.text.trim(),
-                          );
+                          signInController.createViaPasswordAndEmail();
                         }
                       },
                       style: ElevatedButton.styleFrom(

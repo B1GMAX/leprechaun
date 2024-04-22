@@ -10,9 +10,7 @@ class LeadersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(LeadersController());
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 25,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 25),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -35,12 +33,15 @@ class LeadersPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
-            '3 d  16 h  11 m ',
-            style: TextStyle(
-              fontWeight: FontWeight.w900,
-              fontSize: 14,
-              color: Color(0xFFFFCB46),
+          GetBuilder<LeadersController>(
+            init: controller,
+            builder: (leadersController) => Text(
+              leadersController.remainingTime,
+              style: const TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 14,
+                color: Color(0xFFFFCB46),
+              ),
             ),
           ),
           const SizedBox(height: 20),
@@ -55,11 +56,13 @@ class LeadersPage extends StatelessWidget {
                       children: [
                         Expanded(
                           child: ListView.builder(
+                            padding: const EdgeInsets.only(bottom: 90),
                             itemCount: leadersController.leaders.length,
                             itemBuilder: (context, index) {
                               return LeaderWidget(
                                 index: index,
-                                name: 'Anna',
+                                name:
+                                    leadersController.leaders[index].name ?? '',
                                 isSelected: index ==
                                     leadersController.selectedLeaderIndex,
                                 onPressed:
@@ -68,7 +71,6 @@ class LeadersPage extends StatelessWidget {
                             },
                           ),
                         ),
-                        const SizedBox(height: 80),
                       ],
                     ),
             ),

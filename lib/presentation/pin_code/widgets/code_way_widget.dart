@@ -12,64 +12,25 @@ class CodeWayWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Container(
-          height: 30,
-          width: 30,
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(50),
+      children: List.generate(
+        4,
+        (index) {
+          return Container(
+            height: 30,
+            width: 30,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(50),
+              ),
+              border: Border.all(
+                color: Colors.white,
+                width: 4,
+              ),
+              color: length >= index + 1 ? Colors.white : Colors.transparent,
             ),
-            border: Border.all(
-              color: Colors.white,
-              width: 4,
-            ),
-            color: length >= 1 ? Colors.white : Colors.transparent,
-          ),
-        ),
-        Container(
-          height: 30,
-          width: 30,
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(50),
-            ),
-            border: Border.all(
-              color: Colors.white,
-              width: 4,
-            ),
-            color: length >= 2 ? Colors.white : Colors.transparent,
-          ),
-        ),
-        Container(
-          height: 30,
-          width: 30,
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(50),
-            ),
-            border: Border.all(
-              color: Colors.white,
-              width: 4,
-            ),
-            color: length >= 3 ? Colors.white : Colors.transparent,
-          ),
-        ),
-        Container(
-          height: 30,
-          width: 30,
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(50),
-            ),
-            border: Border.all(
-              color: Colors.white,
-              width: 4,
-            ),
-            color: length == 4 ? Colors.white : Colors.transparent,
-          ),
-        ),
-      ],
+          );
+        },
+      ),
     );
   }
 }

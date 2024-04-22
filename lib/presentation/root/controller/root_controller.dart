@@ -14,4 +14,10 @@ class RootController extends GetxController {
       curve: Curves.easeIn,
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    pageController.close();
+  }
 }

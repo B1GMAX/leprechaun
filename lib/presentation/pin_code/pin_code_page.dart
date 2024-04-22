@@ -14,45 +14,47 @@ class PinCodePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF4BB955),
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const CustomBackIcon(
-                    backGroundColor: Colors.white,
-                    iconColor: Color(0xFF4BB955),
-                  ),
-                  const SizedBox(height: 15),
-                  Image.asset('assets/lepricon.png'),
-                  const SizedBox(height: 15),
-                  const Text(
-                    'Set Up PIN Code',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
+        child: Obx(
+          () => Column(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const CustomBackIcon(
+                      backGroundColor: Colors.white,
+                      iconColor: Color(0xFF4BB955),
                     ),
-                  ),
-                  const SizedBox(height: 15),
-                  Obx(
-                    () => CodeWayWidget(
+                    const SizedBox(height: 15),
+                    Image.asset('assets/lepricon.png'),
+                    if (pinCodeController.savedPin.isEmpty) ...[
+                      const SizedBox(height: 15),
+                      const Text(
+                        'Set Up PIN Code',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                    const SizedBox(height: 15),
+                    CodeWayWidget(
                       length: pinCodeController.input.value.length,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            const Expanded(
-              child: NumericKeyboard(),
-            ),
-
-          ],
+              const SizedBox(
+                height: 15,
+              ),
+              const Expanded(
+                child: NumericKeyboard(),
+              ),
+            ],
+          ),
         ),
       ),
     );
