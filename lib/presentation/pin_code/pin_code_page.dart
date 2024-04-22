@@ -6,7 +6,9 @@ import 'package:leprechaun/presentation/pin_code/widgets/code_way_widget.dart';
 import 'package:leprechaun/presentation/pin_code/widgets/numeric_keyboard.dart';
 
 class PinCodePage extends StatelessWidget {
-  const PinCodePage({super.key});
+  final bool showBackButton;
+
+  const PinCodePage({required this.showBackButton, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +25,13 @@ class PinCodePage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const CustomBackIcon(
-                      backGroundColor: Colors.white,
-                      iconColor: Color(0xFF4BB955),
-                    ),
-                    const SizedBox(height: 15),
+                    if (showBackButton) ...[
+                      const CustomBackIcon(
+                        backGroundColor: Colors.white,
+                        iconColor: Color(0xFF4BB955),
+                      ),
+                      const SizedBox(height: 15),
+                    ],
                     Image.asset('assets/lepricon.png'),
                     if (pinCodeController.savedPin.isEmpty) ...[
                       const SizedBox(height: 15),

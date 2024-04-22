@@ -20,14 +20,14 @@ class SignInController extends GetxController {
     final user = await _authService.createViaPasswordAndEmail(
         emailTextController.text.trim(), passwordTextController.text.trim());
     if (user != null) {
-      Get.to(() => const PinCodePage());
+      Get.to(() => const PinCodePage(showBackButton: true));
     }
   }
 
   Future<void> loginWithGoogle() async {
     final user = await _authService.loginWithGoogle();
     if (user != null) {
-      Get.to(() => const PinCodePage());
+      Get.to(() => const PinCodePage(showBackButton: true));
     }
   }
 
